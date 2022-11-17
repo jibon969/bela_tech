@@ -1,0 +1,18 @@
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+migrations/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+*.so
+.idea
+*.idea
+.idea/workspace.xml
+.vscode
+.bash_history
+.PyCharm2018.
+env/
+venv/
