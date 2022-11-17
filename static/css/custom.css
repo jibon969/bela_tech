@@ -1,0 +1,131 @@
+
+.footerArea {
+    background-color: #fefcf8;
+    padding-top: 100px;
+    position: relative;
+    z-index: 1;
+}
+
+.singleFooterWidget {
+    margin-bottom: 30px;
+}
+
+.footerLinksList {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+.footerLinksList li {
+    margin-bottom: 12px;
+    color: #6b6b84;
+    font-weight: 600;
+}
+
+.socialMedia ul {
+    list-style-type: none;
+}
+
+.socialMedia ul li {
+    display: inline;
+    margin: 10px;
+}
+
+.socialMedia{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: #fff;
+    background-color: #6b6b84;
+    font-size: 18px;
+    position: relative;
+    border-radius: 2px;
+    padding-top: 2px;
+}
+
+.socialMedia:hover{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: #fff;
+    background-color: #FF5D22;
+    font-size: 18px;
+    position: relative;
+    border-radius: 2px;
+    padding-top: 2px;
+
+}
+
+.socialMedia a:hover{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: #fff;
+    background-color: #FF5D22;
+    font-size: 18px;
+    position: relative;
+    border-radius: 2px;
+    padding-top: 2px;
+
+}
+
+
+.footerContactInfo {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+.bx {
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    line-height: 1;
+    display: inline-block;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.footerBottomArea {
+    margin-top: 70px;
+    border-top: 1px solid #f3f2ee;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.footerBottomArea ul {
+    text-align: right;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+.footerBottomArea ul li {
+    color: #6b6b84;
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footerBottomArea ul li:before {
+    content: "";
+    position: absolute;
+    right: -12px;
+    top: 5.6px;
+    width: 1px;
+    height: 14px;
+    background-color: #6b6b84;
+}
+
+.footerMap {
+    position: absolute;
+    right: 20%;
+    top: 40%;
+    transform: translateY(-40%);
+    z-index: -1;
+    opacity: .8;
+}
