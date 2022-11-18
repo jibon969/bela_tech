@@ -135,7 +135,6 @@ a {
 
 .footerBottomArea ul li:before {
     content: "";
-    position: absolute;
     right: -12px;
     top: 5.6px;
     width: 1px;
