@@ -16,19 +16,8 @@ body {
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     font-family: Nunito, sans-serif;
-    font-weight: 700;
+    font-weight: 800;
     color: #1e1e1e;
-}
-
-a {
-    color: #1e1e1e;
-    transition: all 0.5s ease-in-out;
-}
-
-a:hover {
-    color: #0078ff;
-    text-decoration: none;
-    transition: all 0.5s ease-in-out;
 }
 
 a {
@@ -95,7 +84,6 @@ a:hover {
     background-attachment: fixed;
     background-size: cover;
     background-position: center center;
-
 }
 
 .overlay-mf {
@@ -198,18 +186,6 @@ a:hover {
     margin-bottom: 3rem;
     z-index: 2;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
-}
-
-.main_title {
-    font-family: Nunito, sans-serif;
-    font-weight: 800;
-    text-align: center;
-}
-
-.sub_title {
-    font-family: Nunito, sans-serif;
-    text-align: center;
-    margin: 0 auto;
 }
 
 /*==================
@@ -657,22 +633,27 @@ Ico Circle
     box-shadow: 0 10px 40px -10px rgba(0, 64, 128, .09);
 }
 
+.aboutTitle {
+    font-family: Nunito, sans-serif;
+    font-weight: 800;
+    text-align: center;
+}
+
+.about_sub_title {
+    font-family: Nunito, sans-serif;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
 /*======================================
     SERVICES
 ======================================*/
-
-.serviceArea {
-    background-color: #F5F5F5;
-    padding-bottom: 70px;
-    overflow: hidden;
-    padding-top: 70px;
-}
 
 .service-box {
     background-color: #fff;
     padding: 2.5rem 1.3rem;
     border-radius: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .service-box:hover .ico-circle {
@@ -732,12 +713,6 @@ Ico Circle
     PORTFOLIO Project
 ======================================*/
 
-.workArea {
-    padding-bottom: 70px;
-    overflow: hidden;
-    padding-top: 70px;
-}
-
 .work-box {
     margin-bottom: 3rem;
     -webkit-backface-visibility: hidden;
@@ -794,11 +769,6 @@ Ico Circle
   TESTIMONIALS
 ======================================*/
 
-.testimonials_background {
-    position: relative;
-    padding: 2rem 0;
-}
-
 .testimonials .owl-carousel .owl-item img {
     width: auto;
 }
@@ -842,9 +812,9 @@ Ico Circle
  ========================================*/
 .team_member {
     background-color: #FEFCF8;
-    padding-bottom: 70px;
+    padding-bottom: 50px;
     overflow: hidden;
-    padding-top: 70px;
+    padding-top: 100px;
 }
 
 .our_team {
@@ -990,7 +960,7 @@ Ico Circle
  ========================================*/
 
 .contactArea {
-    padding-top: 70px;
+    padding-top: 100px;
     padding-bottom: 70px;
     overflow: hidden;
     display: block;
@@ -1092,7 +1062,7 @@ Ico Circle
 
 .footerArea {
     background-color: #fefcf8;
-    padding-top: 70px;
+    padding-top: 100px;
     position: relative;
     z-index: 1;
 }
@@ -1127,7 +1097,7 @@ Ico Circle
     height: 30px;
     text-align: center;
     color: #fff;
-    background-color: #3A559F;
+    background-color: #0D8AF0;
     font-size: 18px;
     position: relative;
     border-radius: 2px;
@@ -1139,7 +1109,7 @@ Ico Circle
     height: 30px;
     text-align: center;
     color: #fff;
-    background-color: #3A559F;
+    background-color: #FF5D22;
     font-size: 18px;
     position: relative;
     border-radius: 2px;
@@ -1152,133 +1122,13 @@ Ico Circle
     height: 30px;
     text-align: center;
     color: #fff;
-    background-color: #3A559F;
+    background-color: #FF5D22;
     font-size: 18px;
     position: relative;
     border-radius: 2px;
     padding-top: 2px;
 
 }
-
-/*linkedin*/
-
-.linkedin {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: #fff;
-    background-color: #0073AF;
-    font-size: 18px;
-    position: relative;
-    border-radius: 2px;
-    padding-top: 2px;
-}
-
-.linkedin:hover {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: #fff;
-    background-color: #0073AF;
-    font-size: 18px;
-    position: relative;
-    border-radius: 2px;
-    padding-top: 2px;
-
-}
-
-.linkedin a:hover {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: #fff;
-    background-color: #0073AF;
-    font-size: 18px;
-    position: relative;
-    border-radius: 2px;
-    padding-top: 2px;
-
-}
-
-/*instagram*/
-
-.instagram {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: #fff;
-    background-color: #C7216C;;
-    font-size: 18px;
-    position: relative;
-    border-radius: 2px;
-    padding-top: 2px;
-}
-
-.instagram:hover {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: #fff;
-    background-color:#C7216C;
-    font-size: 18px;
-    position: relative;
-    border-radius: 2px;
-    padding-top: 2px;
-
-}
-
-.instagram a:hover {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: #fff;
-    background-color: #C7216C;
-    font-size: 18px;
-    position: relative;
-    border-radius: 2px;
-    padding-top: 2px;
-}
-
-
-/*youtube*/
-
-.youtube {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: #fff;
-    background-color: #E22B21;;
-    font-size: 18px;
-    position: relative;
-    border-radius: 2px;
-    padding-top: 2px;
-}
-
-.youtube:hover {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: #fff;
-    background-color:#E22B21;
-    font-size: 18px;
-    position: relative;
-    border-radius: 2px;
-    padding-top: 2px;
-
-}
-
-.youtube a:hover {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: #fff;
-    background-color: #E22B21;
-    font-size: 18px;
-    position: relative;
-    border-radius: 2px;
-    padding-top: 2px;
-}
-
 
 .footerContactInfo {
     padding-left: 0;
