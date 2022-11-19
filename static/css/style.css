@@ -175,8 +175,6 @@ a:hover {
     bottom: -12px;
 }
 
-/*------/ Box /------*/
-
 .box-pl2 {
     padding-left: 2rem;
 }
@@ -268,7 +266,6 @@ Ico Circle
 }
 
 /* Back to top button */
-
 .back-to-top {
     position: fixed;
     display: none;
@@ -626,7 +623,7 @@ Ico Circle
 
 .aboutArea {
     background-color: #FEFCF8;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
     overflow: hidden;
     padding-top: 70px;
 }
