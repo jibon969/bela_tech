@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import (
+    WorkCounter,
     Project,
     Testimonial,
     Team,
@@ -9,6 +10,19 @@ from .models import (
 
 
 # Register your models here.
+
+class WorkCounterAdmin(admin.ModelAdmin):
+    list_per_page = 20
+    list_display = ['title']
+    search_fields = ['title']
+
+    class Meta:
+        model = WorkCounter
+
+
+admin.site.register(WorkCounter, WorkCounterAdmin)
+
+
 class ProjectAdmin(admin.ModelAdmin):
     list_per_page = 20
     list_display = ['title', 'project_type', 'project_url']
