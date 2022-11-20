@@ -1,6 +1,20 @@
 from django.db import models
 
 
+class Testimonial(models.Model):
+    name = models.CharField(max_length=120)
+    image = models.FileField()
+    message = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['-timestamp']
+
+
 class Team(models.Model):
     name = models.CharField(max_length=120)
     designation = models.CharField(max_length=120)

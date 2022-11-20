@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import (
+    Testimonial,
     Team,
     Contact,
     Replay
@@ -7,6 +8,18 @@ from .models import (
 
 
 # Register your models here.
+class TestimonialAdmin(admin.ModelAdmin):
+    list_per_page = 20
+    list_display = ['name']
+    search_fields = ['name']
+
+    class Meta:
+        model = Testimonial
+
+
+admin.site.register(Testimonial, TestimonialAdmin)
+
+
 class TeamAdmin(admin.ModelAdmin):
     list_per_page = 20
     list_display = ['name', 'designation']

@@ -428,34 +428,26 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="testimonial-mf" class="owl-carousel owl-theme">
-                        <div class="testimonial-box">
-                            <div class="author-test">
-                                <img src="{% static 'img/team/jibon.jpg' %}" style="height: 150px; width: 150px"
-                                     alt="Oops image is missing"
-                                     class="rounded-circle b-shadow-a">
-                                <span class="author">Jibon Ahmed</span>
+                        {% for client in testimonial %}
+                            <div class="testimonial-box">
+                                <div class="author-test">
+                                    {% if client.image %}
+                                        <img src="{{ client.image.url }}" style="height: 150px; width: 150px"
+                                             alt="Oops image is missing"
+                                             class="rounded-circle b-shadow-a">
+                                    {% else %}
+                                        <img src="{% static 'img/team/jibon.jpg' %}" style="height: 150px; width: 150px"
+                                             alt="Oops image is missing"
+                                             class="rounded-circle b-shadow-a">
+                                    {% endif %}
+                                    <span class="author">{{ client.name }}</span>
+                                </div>
+                                <div class="content-test">
+                                    <p class="description lead">{{ client.message }}</p>
+                                    <span class="comit"><i class="fa fa-quote-right"></i></span>
+                                </div>
                             </div>
-                            <div class="content-test">
-                                <p class="description lead">
-                                    Hello, there .....
-                                </p>
-                                <span class="comit"><i class="fa fa-quote-right"></i></span>
-                            </div>
-                        </div>
-                        <div class="testimonial-box">
-                            <div class="author-test">
-                                <img src="{% static 'img/team/tasnia-farin.jpg' %}" style="height: 150px; width: 150px"
-                                     alt="Oops image is missing"
-                                     class="rounded-circle b-shadow-a">
-                                <span class="author">Tasnia Farin</span>
-                            </div>
-                            <div class="content-test">
-                                <p class="description lead">
-                                    Hi, there ...
-                                </p>
-                                <span class="comit"><i class="fa fa-quote-right"></i></span>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
