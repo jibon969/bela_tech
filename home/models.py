@@ -16,7 +16,7 @@ class Slider(models.Model):
 
 class Service(models.Model):
     title = models.CharField(max_length=120)
-    description = models.CharField(max_length=120)
+    description = models.TextField()
     logo = models.CharField(max_length=100)
     timestamp = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
