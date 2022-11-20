@@ -4,6 +4,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 from .forms import ContactForm
 from .models import (
+    Slider,
+    Service,
     WorkCounter,
     Project,
     Testimonial,
@@ -21,6 +23,8 @@ def home(request):
     :param request:
     :return:
     """
+    slider = Slider.objects.order_by('-timestamp')[:1]
+    service = Service.objects.all()
     work_counter = WorkCounter.objects.all()[:1]
     project = Project.objects.all()
     testimonial = Testimonial.objects.all()
@@ -37,6 +41,8 @@ def home(request):
         errors = form.errors
 
     context = {
+        'slider': slider,
+        'service': service,
         'work_counter': work_counter,
         'project': project,
         'team': team,
