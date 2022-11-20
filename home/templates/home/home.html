@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% load static %}
 {% block title %} {{ block.super }} {% endblock title %}
 
@@ -245,7 +246,7 @@
 
 
     <!--===============================
-    Section Portfolio Star
+    Section Work / Project Star
     =================================-->
     <section id="work" class="workArea">
         <div class="container">
@@ -261,157 +262,35 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="work-box">
-                        <a href="{% static 'img/work/work-9.PNG' %}" data-lightbox="gallery-mf">
-                            <div class="work-img">
-                                <img src="{% static 'img/work/work-9.PNG' %}" alt="" class="img-fluid">
-                            </div>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Belasea E-commerce</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">18 Sep. 2019</span>
+                {% for p in project %}
+                    <div class="col-md-4">
+                        <div class="work-box">
+                            {% if p.image %}
+                                <a href="{{ p.image.url }}" data-lightbox="gallery-mf">
+                                    <div class="work-img">
+                                        <img src="{{ p.image.url }}" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="work-content">
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <h2 class="w-title">{{ p.title }}</h2>
+                                                <div class="w-more">
+                                                    <span class="w-ctegory">{{ p.project_type }}</span> / <span
+                                                        class="w-date">{{ p.timestamp|naturaltime }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="w-like">
+                                                    <span class="ion-ios-plus-outline"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <span class="ion-ios-plus-outline"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                                </a>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="work-box">
-                        <a href="{% static 'img/work/work-1.jpg' %}" data-lightbox="gallery-mf">
-                            <div class="work-img">
-                                <img src="{% static 'img/work/work-1.jpg' %}" alt="" class="img-fluid">
-                            </div>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Portfolio Website</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">19 June. 2020</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <span class="ion-ios-plus-outline"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="work-box">
-                        <a href="{% static 'img/work/work-2.jpg' %}" data-lightbox="gallery-mf">
-                            <div class="work-img">
-                                <img src="{% static 'img/work/work-2.jpg' %}" alt="" class="img-fluid">
-                            </div>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Belaface - Wholesale</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">18 Sep. 2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <span class="ion-ios-plus-outline"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="work-box">
-                        <a href="{% static 'img/work/work-4.jpg' %}" data-lightbox="gallery-mf">
-                            <div class="work-img">
-                                <img src="{% static 'img/work/work-4.jpg' %}" alt="" class="img-fluid">
-                            </div>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Blog</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">18 Sep. 2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <span class="ion-ios-plus-outline"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="work-box">
-                        <a href="{% static 'img/work/work-5.jpg' %}" data-lightbox="gallery-mf">
-                            <div class="work-img">
-                                <img src="{% static 'img/work/work-5.jpg' %}" alt="" class="img-fluid">
-                            </div>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Photography</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">18 Sep. 2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <span class="ion-ios-plus-outline"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="work-box">
-                        <a href="{% static 'img/work/work-6.jpg' %}" data-lightbox="gallery-mf">
-                            <div class="work-img">
-                                <img src="{% static 'img/work/work-6.jpg' %}" alt="" class="img-fluid">
-                            </div>
-                            <div class="work-content">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h2 class="w-title">Mobile Application</h2>
-                                        <div class="w-more">
-                                            <span class="w-ctegory">Web Design</span> / <span
-                                                class="w-date">18 Sep. 2017</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="w-like">
-                                            <span class="ion-ios-plus-outline"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
     </section>

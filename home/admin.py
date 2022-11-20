@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import (
+    Project,
     Testimonial,
     Team,
     Contact,
@@ -8,6 +9,18 @@ from .models import (
 
 
 # Register your models here.
+class ProjectAdmin(admin.ModelAdmin):
+    list_per_page = 20
+    list_display = ['title', 'project_type', 'project_url']
+    search_fields = ['title', 'project_type', 'project_url']
+
+    class Meta:
+        model = Project
+
+
+admin.site.register(Project, ProjectAdmin)
+
+
 class TestimonialAdmin(admin.ModelAdmin):
     list_per_page = 20
     list_display = ['name']
