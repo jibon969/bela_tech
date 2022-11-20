@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import (
+    Slider,
     Service,
     WorkCounter,
     Project,
@@ -11,6 +12,18 @@ from .models import (
 
 
 # Register your models here.
+class SliderAdmin(admin.ModelAdmin):
+    list_per_page = 20
+    list_display = ['title']
+    search_fields = ['title']
+
+    class Meta:
+        model = Slider
+
+
+admin.site.register(Slider, SliderAdmin)
+
+
 class ServiceAdmin(admin.ModelAdmin):
     list_per_page = 20
     list_display = ['title']
