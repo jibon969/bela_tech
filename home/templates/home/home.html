@@ -651,8 +651,23 @@
                         ></iframe>
                     </div>
                     <div class="col-md-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        <!-- Massage Framework -->
+                        {% for message in messages %}
+                            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="text-center">
+                                    <span>{{ message }}</span>
+                                </div>
+                            </div>
+                        {% endfor %}
                         <div class="contactBox">
-                            <form action="#" method="post">
+                            {% if errors %}
+                                {{ errors }}
+                            {% endif %}
+                            <form action="#" method="POST">
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12 form-group mb-3">
                                         <input type="text" name="name" class="form-control" placeholder="Your Name"/>
@@ -678,9 +693,6 @@
             </div>
         </div>
     </section>
-
-
-
 
 
 {% endblock content %}

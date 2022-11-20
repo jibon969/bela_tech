@@ -12,10 +12,11 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def home(request):
     """
-
     :param request:
     :return:
     """
+
+    # Contact Form
     form = ContactForm(request.POST or None)
     errors = None
     if form.is_valid():
