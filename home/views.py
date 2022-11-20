@@ -2,8 +2,11 @@ import csv
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
-from .forms import ContactForm, ReplayForm
-from .models import Contact
+from .forms import ContactForm
+from .models import (
+    Team,
+    Contact
+)
 from django.conf import settings
 from django.db.models import Q
 from django.core.mail import send_mail
@@ -15,6 +18,7 @@ def home(request):
     :param request:
     :return:
     """
+    team = Team.objects.all()[:5]
 
     # Contact Form
     form = ContactForm(request.POST or None)
@@ -25,7 +29,9 @@ def home(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     if form.errors:
         errors = form.errors
+
     context = {
+        'team': team,
         'form': form,
         'errors': errors
     }
@@ -33,3 +39,24 @@ def home(request):
     return render(request, "home/home.html", context)
 
 
+def contact_csv_download(request):
+    """
+    Download CSV files
+    :param request:
+    :return:
+    """
+    queryset = Contact.objects.all()
+    response = HttpResponse(content_type="text/csv")
+    writer = csv.writer(response)
+    writer.writerow([
+        'ID', 'Subject', 'Full Name', 'E-mail', 'Phone', 'Message'
+    ])
+    for q in queryset:
+        row = []
+        row.extend([
+            q.id, q.subject, q.name, q.email, q.phone, q.message
+        ])
+        writer.writerow(row[:])
+
+    response['Content-Disposition'] = 'attachment; filename="contact-list.csv"'
+    return response

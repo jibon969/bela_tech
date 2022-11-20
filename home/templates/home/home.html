@@ -474,158 +474,79 @@
                 <div class="line-mf mb-5"></div>
             </div>
             <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="text-center wow fadeInUp"
-                         data-wow-duration="1s"
-                         data-wow-delay="0.5s"
-                         data-wow-offset="0">
-                        <div class="our_team">
-                            <div class="team_img">
-                                <img src="{% static 'img/team/jibon.jpg' %}" alt="team-image"/>
-                                <ul class="social">
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="team_content">
-                                <h5 class="title">Jibon Ahmed</h5>
-                                <p class="post">Full Stack Software Engineer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="text-center wow fadeInUp"
-                         data-wow-duration="1s"
-                         data-wow-delay="0.5s"
-                         data-wow-offset="0">
-                        <div class="our_team">
-                            <div class="team_img">
-                                <img src="{% static 'img/team/tasnia-farin.jpg' %}" alt="team-image"/>
-                                <ul class="social">
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="team_content">
-                                <h5 class="title">Tasnia Farin </h5>
-                                <p class="post">Software Tester</p>
+                {% for t in team %}
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="text-center wow fadeInUp"
+                             data-wow-duration="1s"
+                             data-wow-delay="0.5s"
+                             data-wow-offset="0">
+                            <div class="our_team">
+                                <div class="team_img">
+                                    {% if t.image %}
+                                        <img src="{{ t.image.url }}" alt="team-image" width="580" height="580"/>
+                                    {% else %}
+                                        <img src="{% static 'img/team/jibon.jpg' %}" alt="team-image" width="580"
+                                             height="580"/>
+                                    {% endif %}
+                                    <ul class="social">
+                                        <!-- Facebook -->
+                                        {% if t.facebook_url %}
+                                            <li>
+                                                <a href={{ t.facebook_url }}>
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <i class="fa fa-facebook"></i>
+                                            </li>
+                                        {% endif %}
+                                        <!-- Github -->
+                                        {% if t.github_url %}
+                                            <li>
+                                                <a href={{ t.github_url }}>
+                                                    <i class="fa fa-git-square"></i>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <i class="fa fa-git-square"></i>
+                                            </li>
+                                        {% endif %}
+                                        <!-- linkedin -->
+                                        {% if t.linkedin_url %}
+                                            <li>
+                                                <a href={{ t.linkedin_url }}>
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <i class="fa fa-linkedin"></i>
+                                            </li>
+                                        {% endif %}
+                                        <!-- Website -->
+                                        {% if t.website_url %}
+                                            <li>
+                                                <a href={{ t.website_url }}>
+                                                    <i class="fa fa-vcard"></i>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <i class="fa fa-vcard"></i>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <div class="team_content">
+                                    <h5 class="title">{{ t.name }}</h5>
+                                    <p class="post">{{ t.designation }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="text-center wow fadeInUp"
-                         data-wow-duration="1s"
-                         data-wow-delay="0.5s"
-                         data-wow-offset="0">
-                        <div class="our_team">
-                            <div class="team_img">
-                                <img src="{% static 'img/team/team3.jpg' %}" alt="team-image"/>
-                                <ul class="social">
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="team_content">
-                                <h5 class="title">Masuk Ahmed</h5>
-                                <p class="post">Full Stack Software Engineer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="text-center wow fadeInUp"
-                         data-wow-duration="1s"
-                         data-wow-delay="0.5s"
-                         data-wow-offset="0">
-                        <div class="our_team">
-                            <div class="team_img">
-                                <img src="{% static 'img/team/anjana.png' %}" alt="team-image"/>
-                                <ul class="social">
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="team_content">
-                                <h5 class="title">Anjana Vakil</h5>
-                                <p class="post">UI/Ux Engineer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>

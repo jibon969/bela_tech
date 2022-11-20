@@ -1,8 +1,24 @@
 from django.contrib import admin
-from .models import Contact, Replay
+from .models import (
+    Team,
+    Contact,
+    Replay
+)
 
 
 # Register your models here.
+class TeamAdmin(admin.ModelAdmin):
+    list_per_page = 20
+    list_display = ['name', 'designation']
+    search_fields = ['name', 'designation']
+
+    class Meta:
+        model = Team
+
+
+admin.site.register(Team, TeamAdmin)
+
+
 class ContactAdmin(admin.ModelAdmin):
     list_per_page = 20
     list_display = ['subject', 'name', 'phone', 'email']

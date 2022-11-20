@@ -1,6 +1,24 @@
 from django.db import models
 
 
+class Team(models.Model):
+    name = models.CharField(max_length=120)
+    designation = models.CharField(max_length=120)
+    image = models.FileField()
+    facebook_url = models.URLField(blank=True, null=True)
+    github_url = models.URLField(blank=True, null=True)
+    linkedin_url = models.URLField(blank=True, null=True)
+    website_url = models.URLField(blank=True, null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['-timestamp']
+
+
 class Contact(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
