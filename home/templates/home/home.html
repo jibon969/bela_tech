@@ -194,52 +194,54 @@
     <div class="section-counter paralax-mf bg-image" style="background-image: url({% static 'img/counters-bg.jpg' %})">
         <div class="overlay-mf"></div>
         <div class="container">
-            <div class="row">
-                <div class="col-sm-3 col-lg-3">
-                    <div class="counter-box">
-                        <div class="counter-ico">
-                            <span class="ico-circle"><i class="ion-checkmark-round"></i></span>
+            {% for work in work_counter %}
+                <div class="row">
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="ion-checkmark-round"></i></span>
+                            </div>
+                            <div class="counter-num">
+                                <p class="counter">{{ work.work_complete }}</p>
+                                <span class="counter-text">WORKS COMPLETED</span>
+                            </div>
                         </div>
-                        <div class="counter-num">
-                            <p class="counter">5</p>
-                            <span class="counter-text">WORKS COMPLETED</span>
+                    </div>
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box pt-4 pt-md-0">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
+                            </div>
+                            <div class="counter-num">
+                                <p class="counter">{{ work.year_experience }}</p>
+                                <span class="counter-text">YEARS OF EXPERIENCE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box pt-4 pt-md-0">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="ion-ios-people"></i></span>
+                            </div>
+                            <div class="counter-num">
+                                <p class="counter">{{ work.total_client }}</p>
+                                <span class="counter-text">TOTAL CLIENTS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box pt-4 pt-md-0">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
+                            </div>
+                            <div class="counter-num">
+                                <p class="counter">{{ work.award }}</p>
+                                <span class="counter-text">AWARD WON</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3 col-lg-3">
-                    <div class="counter-box pt-4 pt-md-0">
-                        <div class="counter-ico">
-                            <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
-                        </div>
-                        <div class="counter-num">
-                            <p class="counter">4</p>
-                            <span class="counter-text">YEARS OF EXPERIENCE</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-lg-3">
-                    <div class="counter-box pt-4 pt-md-0">
-                        <div class="counter-ico">
-                            <span class="ico-circle"><i class="ion-ios-people"></i></span>
-                        </div>
-                        <div class="counter-num">
-                            <p class="counter">5</p>
-                            <span class="counter-text">TOTAL CLIENTS</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-lg-3">
-                    <div class="counter-box pt-4 pt-md-0">
-                        <div class="counter-ico">
-                            <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
-                        </div>
-                        <div class="counter-num">
-                            <p class="counter">3</p>
-                            <span class="counter-text">AWARD WON</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
     <!--/ Section Counter  End /-->

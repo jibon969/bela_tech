@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 from .forms import ContactForm
 from .models import (
+    WorkCounter,
     Project,
     Testimonial,
     Team,
@@ -20,6 +21,7 @@ def home(request):
     :param request:
     :return:
     """
+    work_counter = WorkCounter.objects.all()[:1]
     project = Project.objects.all()
     testimonial = Testimonial.objects.all()
     team = Team.objects.all()[:5]
@@ -35,6 +37,7 @@ def home(request):
         errors = form.errors
 
     context = {
+        'work_counter': work_counter,
         'project': project,
         'team': team,
         'testimonial': testimonial,

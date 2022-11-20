@@ -1,6 +1,22 @@
 from django.db import models
 
 
+class WorkCounter(models.Model):
+    title = models.CharField(max_length=100)
+    work_complete = models.PositiveBigIntegerField(default=1)
+    year_experience = models.PositiveBigIntegerField(default=2)
+    total_client = models.PositiveBigIntegerField(default=1)
+    award = models.PositiveBigIntegerField(default=1)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['-timestamp']
+
+
 class Project(models.Model):
     title = models.CharField(max_length=120)
     image = models.FileField()
