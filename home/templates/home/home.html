@@ -8,6 +8,29 @@
     <!--========================
         Intro Skew Start
     ===========================-->
+    {% for banner in slider %}
+        <div id="home" class="intro route bg-image" style="background-image: url({{ banner.image.url }})">
+            <div class="overlay-itro"></div>
+            <div class="intro-content display-table">
+                <div class="table-cell">
+                    <div class="container">
+                        <h1 class="intro-title mb-4">{{ banner.title }}</h1>
+                        <p class="intro-subtitle">
+                        <span class="text-slider-items">
+                            Web Design - Development,
+                            E-commerce Website,
+                            Mobile Application,
+                            Digital Marketing,
+                            Graphic Design
+                        </span>
+                            <strong class="text-slider"></strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
     <div id="home" class="intro route bg-image" style="background-image: url({% static 'img/banner/a.jpg' %})">
         <div class="overlay-itro"></div>
         <div class="intro-content display-table">
@@ -56,11 +79,6 @@
                     <p>2. Js, React, Next.js, React Native</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <img src="{% static 'img/logo/python.png' %}" alt="" width="80" height="60">
-                </div>
-            </div>
         </div>
     </section>
     <!--/ About Section End /-->
@@ -78,110 +96,25 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-monitor"></i></span>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">Web Design</h2>
-                            <p class="s-description text-center">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                fugiat!
-                                Quia,
-                                provident vitae! Magni
-                                tempora perferendis eum non provident.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-code-working"></i></span>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">Web Development</h2>
-                            <p class="s-description text-center">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                fugiat!
-                                Quia,
-                                provident vitae! Magni
-                                tempora perferendis eum non provident.
-                            </p>
+                {% for s in service %}
+                    <div class="col-md-4">
+                        <div class="service-box">
+                            <div class="service-ico">
+                                {% if s.logo %}
+                                    <span class="ico-circle"><i class="{{ s.logo }}"></i></span>
+                                {% else %}
+                                    <span class="ico-circle"><i class="ion-code-working"></i></span>
+                                {% endif %}
+                            </div>
+                            <div class="service-content">
+                                <h2 class="s-title">{{ s.timestamp }}</h2>
+                                <p class="s-description text-center">
+                                    {{ s.description }}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <span class="ico-circle">
-                                <i class="fa fa-mobile"></i>
-                            </span>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">Mobile App</h2>
-                            <p class="s-description text-center">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                fugiat!
-                                Quia,
-                                provident vitae! Magni
-                                tempora perferendis eum non provident.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <span class="ico-circle"><i class="fa fa-shopping-cart"></i></span>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">E-commerce</h2>
-                            <p class="s-description text-center">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                fugiat!
-                                Quia,
-                                provident vitae! Magni
-                                tempora perferendis eum non provident.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-paintbrush"></i></span>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">Graphic Design</h2>
-                            <p class="s-description text-center">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                fugiat!
-                                Quia,
-                                provident vitae! Magni
-                                tempora perferendis eum non provident.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-stats-bars"></i></span>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">Digital Marketing</h2>
-                            <p class="s-description text-center">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem
-                                fugiat!
-                                Quia,
-                                provident vitae! Magni
-                                tempora perferendis eum non provident.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
