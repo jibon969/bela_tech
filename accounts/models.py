@@ -107,7 +107,7 @@ class User(AbstractUser):
         max_length=255,
         unique=True,
     )
-    date_of_birth = models.DateField(auto_now_add=False)
+    dob = models.DateField(auto_now_add=False,  verbose_name='Date of Birth')
     contact_number = models.CharField(max_length=15)
     gender = models.CharField(max_length=1, choices=GENDER)
     # last_login = models.DateTimeField(default=timezone.now, verbose_name='Last Login')
