@@ -1,48 +1,58 @@
-
-import os
-import random
-import string
-from django.utils.text import slugify
+import math, random
+import requests
+import json
 
 
-def get_filename(path):
-    return os.path.basename(path)
+# function to generate OTP
+def generateOTP():
+    # Declare a digits variable
+    # which stores all digits
+    digits = "0123456789"
+    OTP = ""
+
+    # length of password can be changed
+    # by changing value in range
+    for i in range(4):
+        OTP += digits[math.floor(random.random() * 10)]
+
+    return OTP
 
 
-def random_string_generator(size=10, chars=string.ascii_lowercase + string.digits):
-    return ''.join(random.choice(chars) for _ in range(size))
+def sendSMS(msisdn, otp):
+    try :
 
+        url = 'https://smsplus.sslwireless.com/api/v3/send-sms'
+        API_TOKEN = "egycwdhy-e2muyvdu-xwzchb02-nkrknigl-snlegvko"
+        SID = "BELAFACENONAPI"
+        msisdn = msisdn
+        message_body = f"Your BELASEA verification code is {otp}. The code will expire in 6 hours. " \
+                      f"Please do NOT share your OTP or PIN with others"
+        csmsId = "4473433434684333392"
 
-def unique_key_generator(instance):
-    """
-    This is for a Django project with an key field
-    """
-    size = random.randint(30, 45)
-    key = random_string_generator(size=size)
+        headers = {
+            'content-type': 'application/json'
+        }
 
-    Klass = instance.__class__
-    qs_exists = Klass.objects.filter(key=key).exists()
-    if qs_exists:
-        return unique_slug_generator(instance)
-    return key
+        payload = {
+            "api_token": API_TOKEN,
+            "sid": SID,
+            "msisdn": msisdn,
+            "sms": message_body,
+            "csms_id": csmsId
+        }
+        response = requests.post(url, data=json.dumps(payload), headers=headers)
 
+        context = {
+            "status": True,
+            "otp": otp,
+            "sms_response": response.json()
+        }
 
-def unique_slug_generator(instance, new_slug=None):
-    """
-    This is for a Django project and it assumes your instance 
-    has a model with a slug field and a title character (char) field.
-    """
-    if new_slug is not None:
-        slug = new_slug
-    else:
-        slug = slugify(instance.title)
+        return context
 
-    Klass = instance.__class__
-    qs_exists = Klass.objects.filter(slug=slug).exists()
-    if qs_exists:
-        new_slug = "{slug}-{randstr}".format(
-                    slug=slug,
-                    randstr=random_string_generator(size=4)
-                )
-        return unique_slug_generator(instance, new_slug=new_slug)
-    return slug
+    except:
+        context = {
+            "status": False,
+        }
+
+        return context
