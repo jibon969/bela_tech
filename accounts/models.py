@@ -2,10 +2,7 @@ from datetime import timedelta
 from django.core.mail import send_mail
 from django.db import models
 from django.contrib.auth.models import (
-    BaseUserManager,
-    AbstractBaseUser,
-    PermissionsMixin,
-    AbstractUser
+    BaseUserManager, AbstractBaseUser, PermissionsMixin, AbstractUser
 )
 from django.db.models import Q
 from django.template.loader import get_template
@@ -13,22 +10,17 @@ from django.urls import reverse
 from django.utils import timezone
 from django.conf import settings
 from django.db.models.signals import post_save, pre_save
+from django.dispatch import receiver
+import time
 
-
-from bela_tech.utils import unique_key_generator
+from .utils import unique_key_generator
 
 DEFAULT_ACTIVATION_DAYS = getattr(settings, 'DEFAULT_ACTIVATION_DAYS', 7)
 
 
 class UserManager(BaseUserManager):
-    def create_user(
-            self, email,
-            password=None,
-            first_name=None,
-            last_name=None,
-            dob=None,
-            gender=None,
-            contact_number=None):
+    def create_user(self, email, password=None, first_name=None, last_name=None, dob=None, gender=None,
+                    contact_number=None):
         """
         Creates and saves a User with the given email and password.
         """
@@ -48,15 +40,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_staffuser(
-            self,
-            email,
-            password,
-            first_name,
-            last_name,
-            dob,
-            gender,
-            contact_number):
+    def create_staffuser(self, email, password, first_name, last_name, dob, gender, contact_number):
         """
         Creates and saves a staff user with the given email and password.
         """
@@ -73,14 +57,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(
-            self,
-            email,
-            password,
-            first_name,
-            last_name,
-            gender,
-            contact_number):
+    def create_superuser(self, email, password, first_name, last_name, gender, contact_number):
         """
         Creates and saves a superuser with the given email and password.
         """
@@ -105,6 +82,11 @@ GENDER = [
     ('O', 'OTHER')
 ]
 
+PLATFORM_TYPE = [
+    ('Mobile', 'Mobile'),
+    ('Web', 'Web'),
+]
+
 
 class User(AbstractUser):
     username = None
@@ -116,6 +98,10 @@ class User(AbstractUser):
     dob = models.DateField(auto_now_add=False, verbose_name='Date of Birth', blank=True, null=True)
     contact_number = models.CharField(max_length=15, verbose_name='Contact Number')
     gender = models.CharField(max_length=1, choices=GENDER)
+    is_buyer = models.BooleanField(default=False)  # for wholesale buyer
+    is_moderator = models.BooleanField(default=False)
+    is_dashboard = models.BooleanField(default=False)
+    platform_type = models.CharField(max_length=20, choices=PLATFORM_TYPE, blank=True, null=True)
 
     # USERNAME_FIELD = 'contact_number'
     USERNAME_FIELD = 'email'
@@ -126,15 +112,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
-
-
-class UserOTP(models.Model):
-    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="user_otp")
-    otp = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.user.contact_number
 
 
 class EmailActivationQuerySet(models.query.QuerySet):
@@ -255,5 +232,3 @@ def post_save_user_create_receiver(sender, instance, created, *args, **kwargs):
 
 
 post_save.connect(post_save_user_create_receiver, sender=User)
-
-
