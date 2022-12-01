@@ -2,7 +2,10 @@ from datetime import timedelta
 from django.core.mail import send_mail
 from django.db import models
 from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser, PermissionsMixin, AbstractUser
+    BaseUserManager,
+    AbstractBaseUser,
+    PermissionsMixin,
+    AbstractUser
 )
 from django.db.models import Q
 from django.template.loader import get_template
@@ -10,17 +13,14 @@ from django.urls import reverse
 from django.utils import timezone
 from django.conf import settings
 from django.db.models.signals import post_save, pre_save
-from django.dispatch import receiver
-import time
-
+from rest_framework.authtoken.models import Token
 from .utils import unique_key_generator
 
 DEFAULT_ACTIVATION_DAYS = getattr(settings, 'DEFAULT_ACTIVATION_DAYS', 7)
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None, first_name=None, last_name=None, dob=None, gender=None,
-                    contact_number=None):
+    def create_user(self, email, password=None, first_name=None, last_name=None, dob=None, gender=None, contact_number=None):
         """
         Creates and saves a User with the given email and password.
         """
@@ -112,6 +112,22 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+
+
+class UserOTP(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="user_otp")
+    otp = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.contact_number
+
+
+class Buyer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.email
 
 
 class EmailActivationQuerySet(models.query.QuerySet):

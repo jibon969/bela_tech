@@ -1,0 +1,74 @@
+{% extends 'accounts/base_accounts.html' %}
+
+{% block title %} Login {% endblock %}
+
+
+{% block content %}
+    <section id="loginSection">
+        <div class="container" style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%);">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 mx-auto">
+                    <h3 class="text-center">
+                        <a href="{% url 'home' %}" class="mb-5">Student Grade System</a>
+                    </h3>
+                    <!--- Massage Framework --->
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="text-center">
+                                <span>{{ message }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!---- End Message --->
+                    <div class="login bg-white shadow">
+                        <div class="card">
+                            <h6 class="card-header text-center mb-2">Please Sign in with email id & password</h6>
+                            <div class="card-body">
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <!--- Email Address --->
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                            </div>
+                                            <input type="email" name="email" class="form-control"
+                                                   id="exampleInputEmail1" placeholder="Enter email">
+                                            <span class="focus-border"></span>
+                                        </div>
+                                    </div>
+                                    <!------ Password ----->
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Enter your password</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                            </div>
+                                            <input type="password" name="password" class="form-control"
+                                                   id="exampleInputPassword1" placeholder="Password">
+                                            <span class="focus-border"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <a href={% url 'account:password-reset' %}>Forget Password</a>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block mb-3">Login</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-2 text-center">Don't have an account ?
+                        <a href="{% url 'account:register' %}" class="mx-2">
+                            Create one here
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

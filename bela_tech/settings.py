@@ -27,10 +27,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'import_export',
+    'crispy_forms',
     # Custom app
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL = '/login/'
@@ -119,18 +123,6 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
-
-# Email Smtp Server
-try:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_USE_TLS = True
-    EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = 'belafacelimited@gmail.com'
-    EMAIL_HOST_PASSWORD = 'dyydjprgzahbpwao'
-    EMAIL_PORT = 587
-    DEFAULT_FROM_EMAIL = 'Coding with Belaface Team <noreply@belaface.com>'
-except:
-    pass
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
