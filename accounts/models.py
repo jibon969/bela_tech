@@ -82,11 +82,6 @@ GENDER = [
     ('O', 'OTHER')
 ]
 
-PLATFORM_TYPE = [
-    ('Mobile', 'Mobile'),
-    ('Web', 'Web'),
-]
-
 
 class User(AbstractUser):
     username = None
@@ -95,14 +90,10 @@ class User(AbstractUser):
         max_length=255,
         unique=True,
     )
-    dob = models.DateField(auto_now_add=False, verbose_name='Date of Birth', blank=True, null=True)
+    date_of_birth = models.DateField(auto_now_add=False, blank=True, null=True)
     contact_number = models.CharField(max_length=15, verbose_name='Contact Number')
     gender = models.CharField(max_length=1, choices=GENDER)
-    is_buyer = models.BooleanField(default=False)  # for wholesale buyer
     is_moderator = models.BooleanField(default=False)
-    is_dashboard = models.BooleanField(default=False)
-    platform_type = models.CharField(max_length=20, choices=PLATFORM_TYPE, blank=True, null=True)
-
     # USERNAME_FIELD = 'contact_number'
     USERNAME_FIELD = 'email'
     # Email & Password are required by default.
@@ -112,22 +103,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
-
-
-class UserOTP(models.Model):
-    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="user_otp")
-    otp = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.user.contact_number
-
-
-class Buyer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.user.email
 
 
 class EmailActivationQuerySet(models.query.QuerySet):
@@ -205,9 +180,9 @@ class EmailActivation(models.Model):
         if not self.activated and not self.forced_expired:
             if self.key:
                 try:
-                    base_url = getattr(settings, 'BASE_URL', 'https://www.belasea.com/')
+                    base_url = getattr(settings, 'BASE_URL', 'https://www.belasea.com')
                 except:
-                    base_url = getattr(settings, 'BASE_URL', 'http://127.0.0.1:8000/')
+                    base_url = getattr(settings, 'BASE_URL', 'http://127.0.0.1:7000')
 
                 key_path = reverse("account:email-activate", kwargs={'key': self.key})  # use reverse
                 path = "{base}{path}".format(base=base_url, path=key_path)
@@ -216,8 +191,8 @@ class EmailActivation(models.Model):
                     'email': self.email,
                     'name': self.user.first_name + ' ' + self.user.last_name
                 }
-                txt_ = get_template("accounts/emails/verify.txt").render(context)
-                html_ = get_template("accounts/emails/verify.html").render(context)
+                txt_ = get_template("accounts/email/verify.txt").render(context)
+                html_ = get_template("accounts/email/verify.html").render(context)
                 subject = '1-Click Email Verification'
                 from_email = settings.DEFAULT_FROM_EMAIL
                 recipient_list = [self.email]
