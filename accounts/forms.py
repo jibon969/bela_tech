@@ -11,7 +11,6 @@ User = get_user_model()
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
-    dob = forms.DateField(input_formats=['%Y-%m-%d'])
 
     class Meta:
         model = User
@@ -21,7 +20,7 @@ class RegisterForm(forms.ModelForm):
             'email',
             'contact_number',
             'gender',
-            'dob'
+            'date_of_birth'
             ]
 
     def clean_email(self):
@@ -42,7 +41,7 @@ class RegisterForm(forms.ModelForm):
         return password2
 
     def clean_dob(self):
-        born = self.cleaned_data.get("dob")
+        born = self.cleaned_data.get("date_of_birth")
         # print(born)
         today = date.today()
         age = today.year - born.year - ((today.month, today.day) < (born.month, born.day))

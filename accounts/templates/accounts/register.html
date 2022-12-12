@@ -67,8 +67,8 @@
                                         <!-- Date of Birth: -->
                                         <div class="form-group col-md-6">
                                             <input type="date" class="form-control" id="datepicker"
-                                                   placeholder="Date of birth" name="dob">
-                                            {{ form.dob.errors }}
+                                                   placeholder="Date of birth" name="date_of_birth">
+                                            {{ form.date_of_birth.errors }}
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -96,9 +96,11 @@
                         </div>
                     </div>
                     <p class="text-center">Already have an account ?
-                        <a href="{% url 'account:login' %}" class="ml-3"><strong class="font-weight-bold"
-                                                                                 style="font-size: 18px">Sign
-                            In</strong></a>
+                        <a href="{% url 'account:login' %}" class="ml-3">
+                            <strong class="font-weight-bold" style="font-size: 18px">
+                                Sign In
+                            </strong>
+                        </a>
                     </p>
                 </div>
             </div>

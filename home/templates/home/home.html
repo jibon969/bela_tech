@@ -74,7 +74,7 @@
             </div>
             <div class="row">
                 {% for s in service %}
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <div class="service-box">
                             <div class="service-ico">
                                 {% if s.logo %}
@@ -84,9 +84,9 @@
                                 {% endif %}
                             </div>
                             <div class="service-content">
-                                <h2 class="sub_title mb-3">{{ s.title }}</h2>
+                                <h4 class="sub_title mb-3">{{ s.title }}</h4>
                                 <p class="text-justify">
-                                    {{ s.description|truncatechars:150 }}
+                                    {{ s.description|truncatewords:20 }}
                                 </p>
                             </div>
                         </div>
