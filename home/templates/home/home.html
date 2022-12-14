@@ -14,7 +14,6 @@
             <div class="intro-content display-table">
                 <div class="table-cell">
                     <div class="container">
-                        <h1 class="intro-title mb-4">{{ banner.title }}</h1>
                         <p class="intro-subtitle">
                         <span class="text-slider-items">
                             Web Design - Development,
@@ -60,7 +59,6 @@
     </section>
     <!--/ About Section End /-->
 
-
     <!--=======================
        Section Services Star
     ===========================-->
@@ -74,20 +72,20 @@
             </div>
             <div class="row">
                 {% for s in service %}
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-2">
                         <div class="service-box">
                             <div class="service-ico">
-                                {% if s.logo %}
-                                    <span class="ico-circle"><i class="{{ s.logo }}"></i></span>
+                                {% if s.icon %}
+                                    <span class="ico-circle"><i class="{{ s.icon }}"></i></span>
                                 {% else %}
                                     <span class="ico-circle"><i class="ion-code-working"></i></span>
                                 {% endif %}
                             </div>
                             <div class="service-content">
                                 <h4 class="sub_title mb-3">{{ s.title }}</h4>
-                                <p class="text-justify">
-                                    {{ s.description|truncatewords:20 }}
-                                </p>
+                                <div class="text-justify">
+                                    {{ s.description|truncatechars:110 }}
+                                </div>
                             </div>
                         </div>
                     </div>

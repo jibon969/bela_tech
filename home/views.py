@@ -23,12 +23,12 @@ def home(request):
     :param request:
     :return:
     """
-    slider = Slider.objects.order_by('-timestamp')[:1]
-    service = Service.objects.all()
+    slider = Slider.objects.all()[:1]
+    service = Service.objects.order_by('value')
     work_counter = WorkCounter.objects.all()[:1]
-    project = Project.objects.all()
-    testimonial = Testimonial.objects.all()
-    team = Team.objects.all()[:5]
+    project = Project.objects.order_by('value')
+    testimonial = Testimonial.objects.order_by('value')
+    team = Team.objects.order_by('value')
 
     # Contact Form
     form = ContactForm(request.POST or None)

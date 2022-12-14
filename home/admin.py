@@ -26,8 +26,9 @@ admin.site.register(Slider, SliderAdmin)
 
 class ServiceAdmin(admin.ModelAdmin):
     list_per_page = 20
-    list_display = ['title']
+    list_display = ['title', 'value', 'timestamp']
     search_fields = ['title']
+    list_editable = ['value']
 
     class Meta:
         model = Service
@@ -50,8 +51,9 @@ admin.site.register(WorkCounter, WorkCounterAdmin)
 
 class ProjectAdmin(admin.ModelAdmin):
     list_per_page = 20
-    list_display = ['title', 'project_type', 'project_url']
+    list_display = ['title', 'project_type', 'project_url', 'value', 'timestamp']
     search_fields = ['title', 'project_type', 'project_url']
+    list_editable = ['value']
 
     class Meta:
         model = Project
@@ -62,8 +64,9 @@ admin.site.register(Project, ProjectAdmin)
 
 class TestimonialAdmin(admin.ModelAdmin):
     list_per_page = 20
-    list_display = ['name']
+    list_display = ['name', 'value', 'timestamp']
     search_fields = ['name']
+    list_editable = ['value']
 
     class Meta:
         model = Testimonial
@@ -74,8 +77,9 @@ admin.site.register(Testimonial, TestimonialAdmin)
 
 class TeamAdmin(admin.ModelAdmin):
     list_per_page = 20
-    list_display = ['name', 'designation']
+    list_display = ['name', 'designation', 'value', 'timestamp']
     search_fields = ['name', 'designation']
+    list_editable = ['value']
 
     class Meta:
         model = Team

@@ -17,7 +17,8 @@ class Slider(models.Model):
 class Service(models.Model):
     title = models.CharField(max_length=120)
     description = models.TextField()
-    logo = models.CharField(max_length=100)
+    icon = models.CharField(max_length=100, help_text="fa fa-home")
+    value = models.PositiveIntegerField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
 
@@ -49,6 +50,7 @@ class Project(models.Model):
     image = models.FileField()
     project_url = models.URLField(blank=True, null=True)
     project_type = models.CharField(max_length=120)
+    value = models.PositiveIntegerField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
 
@@ -63,6 +65,7 @@ class Testimonial(models.Model):
     name = models.CharField(max_length=120)
     image = models.FileField()
     message = models.TextField()
+    value = models.PositiveIntegerField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
 
@@ -81,6 +84,7 @@ class Team(models.Model):
     github_url = models.URLField(blank=True, null=True)
     linkedin_url = models.URLField(blank=True, null=True)
     website_url = models.URLField(blank=True, null=True)
+    value = models.PositiveIntegerField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
 
